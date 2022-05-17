@@ -1,5 +1,35 @@
 {
-  "functions": {
-    "predeploy": ["npm --prefix \"%RESOURCE_DIR%\" run lint"]
-  }
+    "functions": {
+        "predeploy": ["npm --prefix \"%RESOURCE_DIR%\" run lint"],
+        "source": "functions"
+    },
+    "database": {
+        "rules": "database.rules.json"
+    },
+    "firestore": {
+        "rules": "firestore.rules",
+        "indexes": "firestore.indexes.json"
+    },
+    "hosting": {
+        "public": "public",
+        "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+        "rewrites": [{
+            "source": "**",
+            "destination": "/index.html"
+        }]
+    },
+    "storage": {
+        "rules": "storage.rules"
+    },
+    "emulators": {
+        "functions": {
+            "port": 5001
+        },
+        "ui": {
+            "enabled": true
+        }
+    },
+    "remoteconfig": {
+        "template": "remoteconfig.template.json"
+    }
 }
